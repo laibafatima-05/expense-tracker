@@ -1,0 +1,266 @@
+
+body {
+    background: #f4f6fa;
+    color: #20283a;
+    font-family: Arial, sans-serif;
+}
+
+.small-label {
+    color: #6475d9;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 11px;
+}
+
+h1 {
+    font-size: clamp(25px, 4vw, 34px);
+    letter-spacing: -1px;
+}
+
+.date-box {
+    background: white;
+    padding: 11px 15px;
+    border: 1px solid #e5e8f0;
+    border-radius: 12px;
+    color: #596579;
+    font-size: 14px;
+}
+
+.summary-card {
+    padding: 22px;
+    border-radius: 17px;
+    background: white;
+    border: 1px solid #e9ecf3;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.summary-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px #20283a10;
+}
+
+.summary-card p {
+    color: #687387;
+    font-size: 14px;
+    margin: 13px 0 6px;
+}
+
+.summary-card h3 {
+    font-size: clamp(19px, 2.5vw, 25px);
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.card-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 20px;
+}
+
+.income-card .card-icon {
+    background: #e2f8ed;
+    color: #14965b;
+}
+
+.expense-card .card-icon {
+    background: #ffe9e8;
+    color: #e45555;
+}
+
+.balance-card .card-icon {
+    background: #e8ecff;
+    color: #5368d8;
+}
+
+.transaction-card .card-icon {
+    background: #fff0d9;
+    color: #bd7a16;
+}
+
+.content-card {
+    background: white;
+    padding: clamp(16px, 2.5vw, 25px);
+    border: 1px solid #e7eaf1;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px #20283a05;
+}
+
+.section-title {
+    font-weight: 700;
+    font-size: 19px;
+}
+
+.form-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #475166;
+}
+
+.form-control,
+.form-select {
+    min-height: 44px;
+    border-color: #e0e5ee;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #6979df;
+    box-shadow: 0 0 0 3px #6979df20;
+}
+
+.btn-primary {
+    background: #596bd5;
+    border-color: #596bd5;
+    border-radius: 10px;
+    min-height: 45px;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background: #4556bd;
+    border-color: #4556bd;
+}
+
+.btn-outline-secondary {
+    border-radius: 10px;
+}
+
+.record-badge {
+    background: #edf0ff;
+    color: #5365c6;
+    border-radius: 20px;
+    padding: 7px 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-box > i {
+    position: absolute;
+    top: 13px;
+    left: 12px;
+    color: #8992a3;
+}
+
+.search-box .form-control {
+    padding-left: 36px;
+}
+
+.table {
+    min-width: 570px;
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background: #f8f9fc;
+    color: #727d90;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 14px 12px;
+    white-space: nowrap;
+}
+
+.table tbody td {
+    padding: 15px 12px;
+    font-size: 13px;
+    border-color: #f0f1f5;
+}
+
+.transaction-name {
+    font-weight: 600;
+    color: #283147;
+}
+
+.transaction-icon {
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #f0f2ff;
+    color: #596bd5;
+    margin-right: 8px;
+}
+
+.income-text {
+    color: #14965b;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.expense-text {
+    color: #df5656;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.action-btn {
+    border: none;
+    background: transparent;
+    padding: 5px 7px;
+    border-radius: 7px;
+    color: #667085;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 35px 10px;
+    color: #8b94a5;
+}
+
+.empty-state > i {
+    font-size: 35px;
+}
+
+.empty-state h5 {
+    color: #465166;
+    margin-top: 12px;
+    font-weight: 700;
+}
+
+.empty-state p {
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+
+/* Edit button - Blue */
+.action-btn {
+    color: #0d6efd;
+}
+
+.action-btn:hover {
+    color: #084298;
+}
+
+/* Delete button - Red */
+.delete-btn {
+    color: #dc3545;
+}
+
+.delete-btn:hover {
+    color: #b02a37;
+}
+
+
+.action-btn {
+    font-size: 20px;
+    padding: 7px 9px;
+    min-width: 40px;
+    min-height: 40px;
+}
+
+.action-btn i {
+    font-size: 18px;
+}

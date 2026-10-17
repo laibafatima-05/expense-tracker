@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container py-4 py-md-5">
+
+    <header class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+        <div>
+            <p class="small-label mb-1">PERSONAL FINANCE</p>
+            <h1 class="fw-bold mb-1">Expense Tracker</h1>
+            <p class="text-secondary mb-0">Manage your money smartly.</p>
+        </div>
+
+        <div class="date-box">
+            <i class="bi bi-calendar3 me-2"></i>
+            <span id="todayDate"></span>
+        </div>
+    </header>
+
+    <div id="message" class="alert d-none" role="alert"></div>
+
+    <!-- Summary Cards -->
+    <section class="row g-3 mb-4">
+
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="summary-card income-card h-100">
+                <div class="card-icon"><i class="bi bi-wallet2"></i></div>
+                <p>Total Income</p>
+                <h3 id="totalIncome">Rs. 0</h3>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="summary-card expense-card h-100">
+                <div class="card-icon"><i class="bi bi-credit-card"></i></div>
+                <p>Total Expenses</p>
+                <h3 id="totalExpense">Rs. 0</h3>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="summary-card balance-card h-100">
+                <div class="card-icon"><i class="bi bi-piggy-bank"></i></div>
+                <p>Available Balance</p>
+                <h3 id="balance">Rs. 0</h3>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="summary-card transaction-card h-100">
+                <div class="card-icon"><i class="bi bi-arrow-left-right"></i></div>
+                <p>Total Transactions</p>
+                <h3 id="totalTransactions">0</h3>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="row g-4">
+
+        <!-- Add Transaction Form -->
+        <div class="col-12 col-lg-4">
+            <section class="content-card h-100">
+                <h4 class="section-title">Add Transaction</h4>
+                <p class="text-secondary small mb-4">Enter your transaction details below.</p>
+
+                <form id="transactionForm">
+
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" id="title" class="form-control"
+                               placeholder="e.g. Monthly Salary" maxlength="60" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">Amount (Rs.)</label>
+                        <input type="number" id="amount" class="form-control"
+                               placeholder="Enter amount" min="0.01" step="0.01" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="type" class="form-label">Transaction Type</label>
+                        <select id="type" class="form-select" required>
+                            <option value="expense">Expense</option>
+                            <option value="income">Income</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <select id="category" class="form-select" required>
+                            <option value="Food">Food</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Bills">Bills</option>
+                            <option value="Transport">Transport</option>
+                            <option value="Salary">Salary</option>
+                            <option value="Education">Education</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="date" class="form-label">Date</label>
+                        <input type="date" id="date" class="form-control" required>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="btn btn-primary w-100">
+                        <i class="bi bi-plus-lg me-2"></i>Add Transaction
+                    </button>
+
+                    <button type="button" id="cancelEdit" class="btn btn-outline-secondary w-100 mt-2 d-none">
+                        Cancel Edit
+                    </button>
+
+                </form>
+            </section>
+        </div>
+
+        <!-- Transaction History -->
+        <div class="col-12 col-lg-8">
+            <section class="content-card">
+
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                    <div>
+                        <h4 class="section-title mb-1">Transaction History</h4>
+                        <p class="text-secondary small mb-0">Manage your records.</p>
+                    </div>
+                    <span class="record-badge" id="recordCount">0 records</span>
+                </div>
+
+                <div class="row g-2 mb-3">
+                    <div class="col-12 col-md-6">
+                        <div class="search-box">
+                            <i class="bi bi-search"></i>
+                            <input type="search" id="searchInput"
+                                   class="form-control" placeholder="Search transactions...">
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <select id="filterType" class="form-select">
+                            <option value="all">All Transactions</option>
+                            <option value="income">Income Only</option>
+                            <option value="expense">Expenses Only</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead>
+                            <tr>
+                                <th>Transaction</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionList"></tbody>
+                    </table>
+                </div>
+
+                <div id="emptyMessage" class="empty-state">
+                    <i class="bi bi-receipt"></i>
+                    <h5>No transactions yet</h5>
+                    <p>Add your first transaction using the form.</p>
+                </div>
+
+            </section>
+        </div>
+
+    </div>
+
+    <footer class="text-center text-secondary small mt-4">
+        Expense Tracker · Manage your money, one transaction at a time.
+    </footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
